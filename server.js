@@ -8,6 +8,7 @@ const wss = new WebSocket.Server({ server });
 
 let n = 1230;
 
+// Update `n` every 0.2 seconds and broadcast to WebSocket clients
 setInterval(() => {
     n -= 0.020944;
     wss.clients.forEach(client => {
@@ -17,6 +18,9 @@ setInterval(() => {
     });
 }, 200);
 
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-server.listen(3000, () => console.log('Server running on http://localhost:3000'));
+// Make the server listen on the dynamic port provided by Heroku
+const port = process.env.PORT || 3000;
+server.listen(port, () => console.log(`Server running on http://localhost:${port}`));
