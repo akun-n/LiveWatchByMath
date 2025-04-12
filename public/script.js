@@ -1,11 +1,6 @@
 const elt = document.getElementById('calculator');
 const calculator = Desmos.GraphingCalculator(elt, {showGrid: false, showXAxis: false, showYAxis: false});
-calculator.setMathBounds({
-    left: -5.954,
-    right: 6.36,
-    bottom: -4.847,
-    top: 4.938
-});
+
 fetch('watchModel.json')
     .then(response => response.json())
     .then(data => {
